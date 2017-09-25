@@ -12,10 +12,10 @@ close all,
 % --------------------------------------------------------
 
 % -- directory with simulation results, file names
-% MOD_simdir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/outputs/MODFLOW_NWT/';
+MOD_simdir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/res_5yr_wConstHeadMODres2woConstHead_NWT/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/res_5yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
-MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/spinup_30yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
+% MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/spinup_30yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
 
 head_file = 'testhead.dat'; % head data
 

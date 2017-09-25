@@ -7,7 +7,8 @@
 clear all, close all, fclose all;
 
 % -- data files
-dir0 = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/';
+dir0 = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/';
+% dir0 = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/';
 dir1 = 'outputs/PRMS';
 gsflow_csv_fil = 'gsflow.csv';
 
@@ -20,7 +21,9 @@ gsflow_csv_fil = 'gsflow.csv';
 % scenario_dir =  'run5yr_NoMelt_VegTemp_161209d';
 
 % scenario_dir =  'spinup_30yr_wConstHead_NWT';
-scenario_dir =  'res_5yr_wConstHead_NWT';
+scenario_dir =  '.';
+% scenario_dir =  'res_5yr_wConstHead_NWT_2per';
+% scenario_dir =  'res_5yr_wConstHead_NWT_1per';
 % scenario_dir =  'spinup_30yr_woConstHead_NWT';
 % scenario_dir = 'res_5yr_wConstHeadMODres2woConstHead_NWT';
 
