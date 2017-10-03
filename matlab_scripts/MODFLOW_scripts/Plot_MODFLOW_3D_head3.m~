@@ -162,7 +162,7 @@ data_head_all(data_head_all_orig < -999.) = nan;
 data_head_all(round(data_head_all_orig) > 0.9e30) = nan; % dry cell
     
 data_WTD_all_nan = data_WTD_all;
-data_head_all_nan = data_head_all;
+data__all_nan = data_WTD_all;
 
 n_cm = 64;
 dd_WTD = (max(data_WTD_all_nan(:)) - min(data_WTD_all_nan(:))) / (n_cm-1);
@@ -174,7 +174,7 @@ cax_WTD = [min(data_WTD_all_nan(:))-dd_WTD/2-2*dd_WTD max(data_WTD_all_nan(:))+d
 dd_head = (max(data_head_all(:)) - min(data_head_all(:))) / (n_cm-1);
 data_head_all(data_head_all_orig < -999) = min(data_head_all(:)) - dd_head;
 data_head_all(round(data_head_all_orig) > 0.9e30) = min(data_head_all(:)) - 2*dd_head;
-cax_head = [min(data_head_all_nan(:))-dd_head/2-2*dd_head max(data_head_all_nan(:))+dd_head/2];
+cax_head = [min(data_head_all(:))-dd_head/2-2*dd_head max(data_head_all(:))+dd_head/2];
 
 
 % Plot start and end -WTD on single figure, for layers 1 and 2
@@ -254,7 +254,7 @@ for ctr_i = [1, ctr-1, 2, ctr]
 
         caxis(cax_head)
         cm = colormap(parula(n_cm));
-        cm = [1 0 0; 1 1 1; cm];
+        cm = [1 1 1; 1 0 0; cm];
         
         colormap(cm)
     
@@ -263,7 +263,7 @@ for ctr_i = [1, ctr-1, 2, ctr]
 %             time_info(:,ctr_i) % kstp, kper, pertim, totim
         title(['head [m] lay', num2str(lay_info(ctr_i)), ', kper ', num2str(time_info(2,ctr_i)), ', kstp ', num2str(time_info(1,ctr_i))]);
 end
-% return
+return
 
 for ctr_i = 1:ctr
 % for ctr_i = [ctr-2, ctr]
@@ -303,10 +303,9 @@ for ctr_i = 1:ctr
             m = data_head_all(data_head_all>0);
 %             m = data_head_all;
             m1 = min(m(:)); m2 = max(m(:)); 
-            
-            caxis(cax_head)
-            cm = colormap(parula(n_cm));
-            cm = [1 0 0; 1 1 1; cm];
+            caxis([m1*.9 m2])
+            cm = colormap;
+            cm(1,:) = [1 1 1];
             colormap(cm)
 
             colorbar;
@@ -349,11 +348,6 @@ for ctr_i = 1:ctr
 %             cm = colormap;
 %             cm(1,:) = [1 1 1];
 %             colormap(cm)
-
-            caxis(-cax_WTD(end:-1:1))
-            cm = colormap(parula(n_cm));
-            cm = [cm; 1 1 1; 1 0 0];
-            colormap(cm)
 
             colorbar;
             xlabel('x [m]'), ylabel('elev [m]')
