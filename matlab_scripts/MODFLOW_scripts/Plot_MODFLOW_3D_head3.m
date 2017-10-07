@@ -12,6 +12,7 @@ close all,
 % --------------------------------------------------------
 
 % -- directory with simulation results, file names
+% MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/outputs/MODFLOW_NWT/';
 MOD_simdir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/GSFLOW/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/res_5yr_wConstHeadMODres2woConstHead_NWT/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/res_5yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
@@ -34,6 +35,10 @@ head_file = 'testhead.dat'; % head data
 % surfz_fil = [GIS_indir, 'topo.asc'];
 GIS_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/data/GIS/';
 surfz_fil = [GIS_indir, 'stros_srtm_3arc_utm.asc'];
+% GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/Data/GIS/';
+% surfz_fil = [GIS_indir, 'DEM.asc'];
+
+fl_hilite_standingwater = 1; % highlight WTD < 0 in green (dry cells in red)
 
 % Only ONE can be 1, others 0
 fl_MOD_PC = 0;
@@ -171,6 +176,14 @@ data_WTD_all(data_head_all_orig < -999) = min(data_WTD_all(:)) - dd_WTD;
 data_WTD_all(round(data_head_all_orig) > 0.9e30) = min(data_WTD_all(:)) - 2*dd_WTD;
 cax_WTD = [min(data_WTD_all_nan(:))-dd_WTD/2-2*dd_WTD max(data_WTD_all_nan(:))+dd_WTD/2];
 
+% % quick fix to make standing water red in plots:
+% data_WTD_all(data_WTD_all<0) = min(data_WTD_all(:)) - 2*dd_WTD;
+
+if fl_hilite_standingwater
+    data_WTD_all(data_WTD_all_nan<0) = min(data_WTD_all(:)) - 3*dd_WTD;
+    cax_WTD(1) = min(data_WTD_all_nan(:))-dd_WTD/2-3*dd_WTD;
+end
+
 dd_head = (max(data_head_all(:)) - min(data_head_all(:))) / (n_cm-1);
 data_head_all(data_head_all_orig < -999) = min(data_head_all(:)) - dd_head;
 data_head_all(round(data_head_all_orig) > 0.9e30) = min(data_head_all(:)) - 2*dd_head;
@@ -210,7 +223,10 @@ for ctr_i = [1, ctr-1, 2, ctr]
 
     caxis(-cax_WTD(end:-1:1))
     cm = colormap(parula(n_cm));
-    cm = [cm; 1 1 1; 1 0 0];
+    cm = [cm; 1 1 1; 1 0 0]; % dry cells are red
+    if fl_hilite_standingwater
+        cm = [cm; 0 1 0];
+    end
     colormap(cm)
 
     colorbar;

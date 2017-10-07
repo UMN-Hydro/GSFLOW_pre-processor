@@ -5,7 +5,7 @@
 % 2 - gcng
 clear all
 fclose all;
-close all
+% close all
 
 % the followings are used to write item 1
 fl_nstrm = -1;  % flag for stream reaches, <0: include unsaturated zone below (sagehen: >0)
@@ -30,21 +30,36 @@ project_name = 'TestProject';                                             % used
 
 % ======== TO RUN AS SCRIPT ===============================================
 % clear all, close all, fclose all;
-GSFLOW_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/inputs/MODFLOW/';
-infile_pre = 'test2lay';
+% GSFLOW_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/inputs/MODFLOW_NWT/';
+% infile_pre = 'test2lay_py';
+% GSFLOW_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/inputs/MODFLOW_NWT/';
+% infile_pre = 'Shullcas_Updated';
+GSFLOW_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/GSFLOW/inputs/MODFLOW_NWT/';
+infile_pre = 'test2lay_py';
 
-% for sfr
+% - for sfr
 % GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data/GIS/';
-GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/Data/GIS/';
+% reach_fil = [GIS_indir, 'reach_data.txt'];
+% segment_fil_all = cell(3,1);
+% segment_fil_all{1} = [GIS_indir, 'segment_data_4A_INFORMATION.txt'];
+% segment_fil_all{2} = [GIS_indir, 'segment_data_4B_UPSTREAM.txt'];
+% segment_fil_all{3} = [GIS_indir, 'segment_data_4C_DOWNSTREAM.txt'];
+% 
+% GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data/GIS/';
+% mask_fil = [GIS_indir, 'basinmask_dischargept.asc']; % only for Chimb
+
+% GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data2/Chimb_New_MoreGridExtent/';
+% GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/Data/GIS/';
+GIS_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/data/GIS/';
+
 reach_fil = [GIS_indir, 'reaches_tmp.txt'];
 segment_fil_all = cell(3,1);
-segment_fil_all{1} = [GIS_indir, 'segment_data_4A_INFORMATION.txt'];
-segment_fil_all{2} = [GIS_indir, 'segment_data_4B_UPSTREAM.txt'];
-segment_fil_all{3} = [GIS_indir, 'segment_data_4C_DOWNSTREAM.txt'];
+segment_fil_all{1} = [GIS_indir, 'segments_tmp_4A_INFORMATION.txt'];
+segment_fil_all{2} = [GIS_indir, 'segments_tmp_4B_UPSTREAM.txt'];
+segment_fil_all{3} = [GIS_indir, 'segments_tmp_4C_DOWNSTREAM.txt'];
 
-% GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data/GIS/';
-mask_fil = [GIS_indir, 'basinmask_dischargept.asc']; % only for Chimb
-
+% GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data2/Chimb_New_MoreGridExtent/';
+mask_fil = [GIS_indir, 'basin_mask.asc']; % only for Chimb
 
 % =========================================================================
 
@@ -154,9 +169,9 @@ if isstruct(reach_data_all)
         NCOL = D{2}(6);
         D = textscan(fid, '%f'); 
         IBOUND = reshape(D{1}, NCOL, NROW)'; % NROW x NCOL
-        D = textscan(fid, '%s %s %f %s %f'); 
-        dischargePt_rowi = D{3};
-        dischargePt_coli = D{5};
+%         D = textscan(fid, '%s %s %f %s %f'); 
+%         dischargePt_rowi = D{3};
+%         dischargePt_coli = D{5};
         fclose(fid);
 
         % find boundary cells
@@ -220,7 +235,24 @@ if isstruct(reach_data_all)
     colormap(cm)
     caxis([-1.5 max(ISEG)+0.5])
     axis equal
-    print('-dsvg', 'segmap.svg');
+    
+    
+    figure
+    SEG_NUM0 = SEG_NUM;
+    for ii = 1: max(ISEG)
+        SEG_NUM0 = SEG_NUM;
+        SEG_NUM0(SEG_NUM0>ii) = -1;
+        imagesc(SEG_NUM0), colorbar, 
+        cm = colormap(jet(2+max(ISEG)));
+        cm(2,:) = [1 1 1]*.8;
+        cm(1,:) = [0 0 0];
+        colormap(cm)
+        caxis([-1.5 max(ISEG)+0.5])
+        title(['Seg ', num2str(ii)]);
+        pause
+    end
+        axis equal    
+%     print('-dsvg', 'segmap.svg');
 end
 
 %     % when running as script: to visualize segments one at a time
