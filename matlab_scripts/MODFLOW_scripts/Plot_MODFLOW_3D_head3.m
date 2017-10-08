@@ -13,10 +13,13 @@ close all,
 
 % -- directory with simulation results, file names
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/outputs/MODFLOW_NWT/';
-MOD_simdir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/GSFLOW/outputs/MODFLOW_NWT/';
+% MOD_simdir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/GSFLOW/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/res_5yr_wConstHeadMODres2woConstHead_NWT/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/res_5yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/spinup_30yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
+% MOD_simdir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/Shullcas/GSFLOW/outputs/MODFLOW_NWT/';
+% MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_not_bad_water_balance/GSFLOW/outputs/MODFLOW_NWT/';
+MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren3/outputs/MODFLOW_NWT/';
 
 head_file = 'testhead.dat'; % head data
 
@@ -33,10 +36,14 @@ head_file = 'testhead.dat'; % head data
 % for WTD
 % GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data/GIS/';
 % surfz_fil = [GIS_indir, 'topo.asc'];
-GIS_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/data/GIS/';
-surfz_fil = [GIS_indir, 'stros_srtm_3arc_utm.asc'];
+% GIS_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/data/GIS/';
+% surfz_fil = [GIS_indir, 'stros_srtm_3arc_utm.asc'];
 % GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/Data/GIS/';
 % surfz_fil = [GIS_indir, 'DEM.asc'];
+% GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/Shullcas/data/GIS/';
+% surfz_fil = [GIS_indir, 'DEM.asc'];
+GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/GSFLOW_input_Shullcas/CrystalLauren3/';
+surfz_fil = [GIS_indir, 'DEM.asc'];
 
 fl_hilite_standingwater = 1; % highlight WTD < 0 in green (dry cells in red)
 

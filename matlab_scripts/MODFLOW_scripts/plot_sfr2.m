@@ -34,7 +34,9 @@ project_name = 'TestProject';                                             % used
 % infile_pre = 'test2lay_py';
 % GSFLOW_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/inputs/MODFLOW_NWT/';
 % infile_pre = 'Shullcas_Updated';
-GSFLOW_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/GSFLOW/inputs/MODFLOW_NWT/';
+% GSFLOW_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/GSFLOW/inputs/MODFLOW_NWT/';
+% GSFLOW_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/Shullcas/GSFLOW/inputs/MODFLOW_NWT/';
+GSFLOW_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren3/inputs/MODFLOW_NWT/';
 infile_pre = 'test2lay_py';
 
 % - for sfr
@@ -50,7 +52,9 @@ infile_pre = 'test2lay_py';
 
 % GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/Data2/Chimb_New_MoreGridExtent/';
 % GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/Data/GIS/';
-GIS_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/data/GIS/';
+% GIS_indir = '/home/gcng/workspace/matlab_files/GSFLOW_pre-processor/data/GIS/';
+GIS_indir =  '/media/gcng/STORAGE3A/GSFLOW/GSFLOW_input_Shullcas/CrystalLauren3/';
+
 
 reach_fil = [GIS_indir, 'reaches_tmp.txt'];
 segment_fil_all = cell(3,1);
