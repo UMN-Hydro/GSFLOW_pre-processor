@@ -19,7 +19,7 @@ close all,
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/spinup_30yr_wConstHead_NWT/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/Shullcas/GSFLOW/outputs/MODFLOW_NWT/';
 % MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_not_bad_water_balance/GSFLOW/outputs/MODFLOW_NWT/';
-MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren3/outputs/MODFLOW_NWT/';
+MOD_simdir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren5/outputs/MODFLOW_NWT/';
 
 head_file = 'testhead.dat'; % head data
 
@@ -42,7 +42,7 @@ head_file = 'testhead.dat'; % head data
 % surfz_fil = [GIS_indir, 'DEM.asc'];
 % GIS_indir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/Shullcas/data/GIS/';
 % surfz_fil = [GIS_indir, 'DEM.asc'];
-GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/GSFLOW_input_Shullcas/CrystalLauren3/';
+GIS_indir = '/media/gcng/STORAGE3A/GSFLOW/GSFLOW_input_Shullcas/CrystalLauren5/';
 surfz_fil = [GIS_indir, 'DEM.asc'];
 
 fl_hilite_standingwater = 1; % highlight WTD < 0 in green (dry cells in red)

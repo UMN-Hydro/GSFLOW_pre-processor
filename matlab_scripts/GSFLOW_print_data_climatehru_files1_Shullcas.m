@@ -18,7 +18,7 @@ inname = ''; % test name
 % directory for PRMS input files (include slash ('/') at end) - cbh files
 % outputed to here
 % PRMSinput_dir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/inputs/PRMS/';
-PRMSinput_dir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren3/inputs/PRMS/';
+PRMSinput_dir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren5/inputs/PRMS/';
 
 % PRMSinput_dir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/ChimTest';
 
@@ -32,7 +32,7 @@ in_climatedata_dir =  '/media/gcng/STORAGE3A/GSFLOW/Shullcas_Updated_gcng/Data/c
 % in_GISdata_dir = strcat(in_data_dir, 'GIS/'); % specifically GIS data
 % HRUfil = strcat(in_GISdata_dir, 'HRU.csv');
 
-in_GISdata_dir = '/media/gcng/STORAGE3A/GSFLOW/GSFLOW_input_Shullcas/CrystalLauren3/'; % specifically GIS data
+in_GISdata_dir = '/media/gcng/STORAGE3A/GSFLOW/GSFLOW_input_Shullcas/CrystalLauren5/'; % specifically GIS data
 HRUfil = strcat(in_GISdata_dir, 'HRUs_tmp.txt');
 
 
