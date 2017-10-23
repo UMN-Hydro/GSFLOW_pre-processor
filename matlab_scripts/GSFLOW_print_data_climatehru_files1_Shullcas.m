@@ -18,7 +18,7 @@ inname = ''; % test name
 % directory for PRMS input files (include slash ('/') at end) - cbh files
 % outputed to here
 % PRMSinput_dir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/inputs/PRMS/';
-PRMSinput_dir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren5/inputs/PRMS/';
+PRMSinput_dir = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren5_works/inputs/PRMS/';
 
 % PRMSinput_dir = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/ChimTest';
 
