@@ -4,12 +4,15 @@
 %  create_table_gsflowcsv.m
 
 
-clear all, close all, fclose all;
+clear all, 
+fclose all;
+% close all, 
+fig_0 = 0;
 
 % -- data files
-dir0 = '/home/gcng/workspace/ProjectFiles/AndesWaterResources/GSFLOW/';
+dir0 = '/media/gcng/STORAGE3A/GSFLOW/Shullcas_CrystalLauren5_works_res/';
 % dir0 = '/media/gcng/STORAGE3A/GSFLOW/simdir_Sept2017/';
-dir1 = 'outputs/PRMS';
+dir1 = 'outputs/PRMS_GSFLOW/';
 gsflow_csv_fil = 'gsflow.csv';
 
 % Choose one:
@@ -44,6 +47,13 @@ ii = ii+1; PlotVar{ii} = {'uzf_infil'};
 ii = ii+1; PlotVar{ii} = {'basingw2sz', 'net_sz2gw'};
 ii = ii+1; PlotVar{ii} = {'stream_leakage', 'gwflow2strms'};
 
+ii = ii+1; PlotVar{ii} = {'unsat_stor'};
+ii = ii+1; PlotVar{ii} = {'sat_stor'};
+ii = ii+1; PlotVar{ii} = {'basinsoilmoist'};
+ii = ii+1; PlotVar{ii} = {'basingravstor'};
+
+
+
 PlotVar = PlotVar(1:ii);
 
 % -- plot configurations
@@ -54,7 +64,7 @@ n_pcol = 1;
 % ymd_lim = [2044 6 16; 2045 6 15];
 % ymd_lim = [2016+28 1 1; 2016+28 12 30];
 % ymd_lim = [2019 6 16; 2020 6 15];
-ymd_lim = [2015 6 16; 2020 6 15];
+ymd_lim = [2013 6 16; 2016 3 30];
 % ymd_lim = ''; % if empty, plot all data
 tick_incr_mon = 3; % tick every this many months
 
@@ -85,9 +95,9 @@ for ii = 1:length(PlotVar)
     
     fig_i = ceil(ii/(n_prow*n_pcol));
     p_i = mod(ii-1,n_prow*n_pcol)+1;
-    figure(fig_i), orient tall
+    figure(fig_i+fig_0), orient tall
     subplot(n_prow, n_pcol, p_i),
-    plot(datenum_all, x);
+    plot(datenum_all, x); hold on
     legend(PlotVar{ii});
 
     % get tick marks
@@ -108,7 +118,7 @@ for ii = 1:length(PlotVar)
     end
 end
 
-for ii = 1: fig_i
-    fil = [filpre, num2str(ii), '.tiff'];
-    print('-dtiff', ['-f', num2str(ii)], fil);
-end
+% for ii = 1: fig_i
+%     fil = [filpre, num2str(ii), '.tiff'];
+%     print('-dtiff', ['-f', num2str(ii)], fil);
+% end
